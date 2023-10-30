@@ -6,6 +6,9 @@ const router = express.Router();
 router.route("/student/:id")
     .patch(paymentController.makeExamPayment)
 
+router.route("/student/allPayment")
+    .get(paymentController.creatSingleDayPayment)
+
 
 
 module.exports = router;

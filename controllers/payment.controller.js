@@ -6,18 +6,18 @@ const { generateToken } = require("../utils/token");
 
 exports.makeExamPayment = async (req, res, next) => {
     try {
-        const { money, payOption } = { ...req.body }
+        console.log(req.body);
+        const { money, payOption, type } = { ...req.body }
 
         const { id } = req.params;
 
         const getId = await getSingleSearchStudent(id)
-        const newResult = getId.payment.examfee[payOption];
-        console.log(newResult);
+        const newResult = getId.payment[type][payOption];
         if (newResult > 0) {
             res.status(400)
             throw new Error("")
         }
-        const data = await updateFee(id, money, payOption)
+        const data = await updateFee(id, money, type, payOption)
         res.status(200).json({
             status: "Success",
             message: "Successfully Added Fee",

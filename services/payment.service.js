@@ -5,7 +5,7 @@ exports.getSingleSearchStudent = async (id) => {
     return student;
 }
 
-exports.updateFee = async (id, money, payOption) => {
-    const result = await Student.updateOne({ _id: id }, { $set: { [`payment.examfee.${payOption}`]: money } }, { runValidators: true });
+exports.updateFee = async (id, money, type, payOption) => {
+    const result = await Student.updateOne({ _id: id }, { $set: { [`payment.${type}.${payOption}`]: money } }, { runValidators: true });
     return result;
 }

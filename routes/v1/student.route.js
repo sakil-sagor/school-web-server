@@ -14,5 +14,8 @@ router.route("/all")
 // search student single 
 router.route("/")
     .get(studentController.getSearchStudent)
+router.route("/:id")
+    .patch(studentController.getSearchStudent)
+
 
 module.exports = router;

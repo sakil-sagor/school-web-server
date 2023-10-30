@@ -1,4 +1,5 @@
 const Student = require("../models/Student");
+const StudentPayment = require("../models/StudentPayment");
 
 exports.getAllStudents = async () => {
     const result = await Student.find();

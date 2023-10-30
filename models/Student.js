@@ -72,7 +72,72 @@ const StudentSchema = mongoose.Schema({
         lowercase: true,
     },
 
+    payment: {
+        examfee: {
+            halfYear: {
+                type: Number,
+            },
+            fullYear: {
+                type: Number,
+            },
+            pretest: {
+                type: Number,
+            },
+            test: {
+                type: Number,
+            },
+        },
+        sessionfee: {
+            admission: {
+                type: Number,
+            },
+            session: {
+                type: Number,
+            },
 
+        },
+        monthlyfee: {
+            january: {
+                type: Number,
+            },
+            february: {
+                type: Number,
+            },
+            march: {
+                type: Number,
+            },
+            april: {
+                type: Number,
+            },
+            may: {
+                type: Number,
+            },
+            june: {
+                type: Number,
+            },
+            july: {
+                type: Number,
+            },
+            august: {
+                type: Number,
+            },
+            september: {
+                type: Number,
+            },
+            october: {
+                type: Number,
+            },
+            november: {
+                type: Number,
+            },
+            december: {
+                type: Number,
+            },
+        },
+
+
+
+    },
 
     studentId: {
         type: String,

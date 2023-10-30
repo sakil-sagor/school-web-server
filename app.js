@@ -12,12 +12,12 @@ app.use(cors());
 //routes
 const studentRoute = require('./routes/v1/student.route')
 const teacherRoute = require("./routes/v1/teacher.route")
-// const paymentRoute = require("./routes/v1/payment.route")
+const paymentRoute = require("./routes/v1/payment.route")
 
-// app.use("/api/v1/student", studentRoute);
+
 app.use("/api/v1/teacher", teacherRoute)
 app.use("/api/v1/student", studentRoute)
-// app.use("/api/v1/payment", paymentRoute)
+app.use("/api/v1/payment", paymentRoute)
 
 
 

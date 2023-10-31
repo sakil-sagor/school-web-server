@@ -1,5 +1,5 @@
 
-const { getSingleSearchStudent, updateFee } = require("../services/payment.service");
+const { getSingleSearchStudent, updateFee, createSingleDayPayment } = require("../services/payment.service");
 const { getAllStudents } = require("../services/student.service");
 const { findTeacherByPhone, createTeacherService, getAllTeachers } = require("../services/teacher.service");
 const { generateToken } = require("../utils/token");
@@ -32,7 +32,8 @@ exports.makeExamPayment = async (req, res, next) => {
     }
 
 }
-exports.creatSingleDayPayment = async (req, res, next) => {
+
+exports.getAllTotalPayment = async (req, res, next) => {
     try {
         const allStudents = await getAllStudents();
 
@@ -51,9 +52,6 @@ exports.creatSingleDayPayment = async (req, res, next) => {
             sessionfeeTotal,
             monthlyfeeTotal,
         };
-        console.log(paymentSummary);
-
-
         res.status(200).json({
             status: "Success",
             paymentSummary
@@ -63,6 +61,28 @@ exports.creatSingleDayPayment = async (req, res, next) => {
             status: "fail",
             error: "Could't Added Fee"
         })
+    }
+
+}
+exports.postDayPayment = async (req, res, next) => {
+    try {
+        console.log(req.body);
+
+
+        const student = await createSingleDayPayment(req.body);
+        console.log(student);
+        res.status(200).json({
+            status: "success",
+            message: "Successfully Added Student",
+            data: student,
+        })
+    } catch (error) {
+        res.status(500).json({
+            status: "fail",
+            message: "Couldn't create student",
+            error: error.message,
+
+        });
     }
 
 }

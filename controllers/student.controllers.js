@@ -11,11 +11,6 @@ exports.createStudent = async (req, res) => {
         const year = currentDate.getFullYear() % 100
         let studentId = `${new Date().getFullYear() % 100}${totalStudents.length + 1001}`;
         const studentDetails = { ...req.body, studentId };
-
-
-
-
-
         const student = await createStudentService(studentDetails);
         console.log(student);
         res.status(200).json({

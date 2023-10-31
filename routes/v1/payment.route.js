@@ -7,8 +7,7 @@ router.route("/student/:id")
     .patch(paymentController.makeExamPayment)
 
 router.route("/student/allPayment")
-    .get(paymentController.creatSingleDayPayment)
-
-
+    .get(paymentController.getAllTotalPayment)
+    .post(paymentController.postDayPayment)
 
 module.exports = router;

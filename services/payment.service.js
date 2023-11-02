@@ -12,9 +12,13 @@ exports.updateFee = async (id, money, type, payOption) => {
 }
 
 exports.createSingleDayPayment = async (detials) => {
+    // console.log(detials);
+    // const { examfee, sessionfee, monthlyfee } = detials;
+    // const newFee = new AllPaymentSum({ examfee, sessionfee, monthlyfee });
+    // console.log(newFee);
+    // const dayPayment = await newFee.save();
     console.log(detials);
-    const { examfee, sessionfee, monthlyfee, total } = detials;
-    const newFee = new AllPaymentSum({ examfee, sessionfee, monthlyfee, total });
-    const dayPayment = await newFee.save();
-    return dayPayment;
+    const studentAdd = await AllPaymentSum.create(detials);
+    console.log(studentAdd);
+    return studentAdd;
 }

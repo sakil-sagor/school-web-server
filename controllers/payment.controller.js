@@ -66,7 +66,7 @@ exports.getAllTotalPayment = async (req, res, next) => {
 }
 exports.postDayPayment = async (req, res, next) => {
     try {
-        console.log(req.body);
+        // console.log(req.body);
 
 
         const student = await createSingleDayPayment(req.body);

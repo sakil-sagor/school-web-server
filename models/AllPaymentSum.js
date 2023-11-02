@@ -3,19 +3,29 @@ const validator = require('validator');
 const { ObjectId } = mongoose.Schema.Types;
 
 const AllPaymentSumSchema = mongoose.Schema({
-    allTypeFee: [
-        {
-            date: {
-                type: Date,
-                default: Date.now,
-            },
-            examfee: Number,
-            sessionfee: Number,
-            monthlyfee: Number,
-            total: Number,
-        },
-    ],
 
+
+    // date: {
+    //     type: Date,
+    //     default: Date.now,
+    // },
+    examfee: {
+        type: Number,
+        required: true,
+    },
+    sessionfee: {
+        type: Number,
+        required: true,
+    },
+    monthlyfee: {
+        type: Number,
+        required: true,
+    },
+
+
+
+}, {
+    timestamps: true,
 })
 
 const AllPaymentSum = mongoose.model('AllPaymentSum', AllPaymentSumSchema);

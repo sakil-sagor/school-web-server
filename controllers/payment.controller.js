@@ -1,5 +1,5 @@
 
-const { getSingleSearchStudent, updateFee, createSingleDayPayment } = require("../services/payment.service");
+const { getSingleSearchStudent, updateFee, createSingleDayPayment, getAllDayPayment } = require("../services/payment.service");
 const { getAllStudents } = require("../services/student.service");
 const { findTeacherByPhone, createTeacherService, getAllTeachers } = require("../services/teacher.service");
 const { generateToken } = require("../utils/token");
@@ -64,11 +64,45 @@ exports.getAllTotalPayment = async (req, res, next) => {
     }
 
 }
+
+
+exports.getAllByDayPayment = async (req, res, next) => {
+    try {
+        const allPayments = await getAllDayPayment();
+        let examfeeTotal = 0;
+        let sessionfeeTotal = 0;
+        let monthlyfeeTotal = 0;
+
+
+        allPayments.forEach((student) => {
+            // Sum the payment values for each category
+            examfeeTotal += student.examfee;
+            sessionfeeTotal += student.sessionfee;
+            monthlyfeeTotal += student.monthlyfee;
+        });
+        const paymentSummary = {
+            examfeeTotal,
+            sessionfeeTotal,
+            monthlyfeeTotal,
+        };
+
+        res.status(200).json({
+            status: "success",
+            data: allPayments,
+            payment: paymentSummary,
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            error: "Couldn't get the Students",
+        });
+    }
+}
+
+
+
 exports.postDayPayment = async (req, res, next) => {
     try {
-        // console.log(req.body);
-
-
         const student = await createSingleDayPayment(req.body);
         console.log(student);
         res.status(200).json({

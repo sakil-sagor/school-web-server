@@ -10,4 +10,8 @@ router.route("/student/allPayment")
     .get(paymentController.getAllTotalPayment)
     .post(paymentController.postDayPayment)
 
+router.route("/getAllByDay")
+    .get(paymentController.getAllByDayPayment)
+
+
 module.exports = router;

@@ -4,11 +4,11 @@ const { ObjectId } = mongoose.Schema.Types;
 
 const AllPaymentSumSchema = mongoose.Schema({
 
+    id: {
+        type: String,
+        ref: "Teacher",
 
-    // date: {
-    //     type: Date,
-    //     default: Date.now,
-    // },
+    },
     examfee: {
         type: Number,
         required: true,

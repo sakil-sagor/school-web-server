@@ -32,7 +32,6 @@ exports.createStudent = async (req, res) => {
 // get all students 
 exports.getAllStudent = async (req, res) => {
     try {
-        console.log("req")
         const allStudents = await getAllStudents();
         res.status(200).json({
             status: "success",

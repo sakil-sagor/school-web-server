@@ -1,7 +1,13 @@
+const HighlightNotice = require("../models/HighlightNotice");
 const Notice = require("../models/Notice");
+
 
 exports.createNotice = async (noticeInfo) => {
     const result = await Notice.create(noticeInfo);
+    return result;
+}
+exports.createHightlightNotice = async (noticeInfo) => {
+    const result = await HighlightNotice.create(noticeInfo);
     return result;
 }
 exports.getNotice = async (filters, queries) => {

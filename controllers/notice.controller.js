@@ -1,10 +1,8 @@
-const { createNotice, getNotice } = require("../services/notice.service");
+const { createNotice, getNotice, createHightlightNotice } = require("../services/notice.service");
 
 exports.postSingleNotice = async (req, res, next) => {
     try {
         const noticeResult = await createNotice(req.body);
-        console.log(noticeResult);
-        console.log("req");
         res.status(200).json({
             status: "success",
             message: "Successfully Added Student",
@@ -16,6 +14,26 @@ exports.postSingleNotice = async (req, res, next) => {
             message: "Couldn't create student",
             error: error.message,
 
+        });
+    }
+
+}
+exports.postHighlightNotice = async (req, res, next) => {
+    console.log(req.body);
+    try {
+        const noticeResult = await createHightlightNotice(req.body);
+        console.log(noticeResult);
+
+        res.status(200).json({
+            status: "success",
+            message: "Successfully Added Student",
+            data: noticeResult,
+        })
+    } catch (error) {
+        res.status(500).json({
+            status: "fail",
+            message: "Couldn't create student",
+            error: error.message,
         });
     }
 

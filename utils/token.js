@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 exports.generateToken = (userInfo) => {
     const payload = {
-        contactNumber: userInfo.contactNumber,
+        adminPhone: userInfo.adminPhone,
         role: userInfo.role,
     };
     const token = jwt.sign(payload, process.env.TOKEN_SECRET, {
@@ -17,3 +17,6 @@ exports.generateToken = (userInfo) => {
 
 
 
+// for crypot generate
+
+// node,  crypto.randomBytes(64).toString("hex")  

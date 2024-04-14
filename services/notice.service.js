@@ -21,6 +21,10 @@ exports.getNotice = async (filters, queries) => {
 };
 
 exports.getAllHighNoticeDb = async () => {
-  const result = await HighlightNotice.find();
+  const result = await HighlightNotice.find().sort({ createdAt: "desc" });
+  return result;
+};
+exports.deleteSingleHighNoticeDb = async (noticeId) => {
+  const result = await HighlightNotice.deleteOne({ _id: noticeId });
   return result;
 };

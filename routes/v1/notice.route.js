@@ -10,6 +10,7 @@ router
 router
   .route("/highlightNotice")
   .post(noticeController.postHighlightNotice)
-  .get(noticeController.getAllHighlighNotice);
+  .get(noticeController.getAllHighlighNotice)
+  .delete(noticeController.deleteHighlightNotice);
 
 module.exports = router;

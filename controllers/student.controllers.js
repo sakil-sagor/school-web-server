@@ -12,7 +12,7 @@ exports.createStudent = async (req, res) => {
         let studentId = `${new Date().getFullYear() % 100}${totalStudents.length + 1001}`;
         const studentDetails = { ...req.body, studentId };
         const student = await createStudentService(studentDetails);
-        console.log(student);
+  
         res.status(200).json({
             status: "success",
             message: "Successfully Added Student",

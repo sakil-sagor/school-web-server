@@ -3,6 +3,7 @@ const {
   getNotice,
   createHightlightNotice,
   getAllHighNoticeDb,
+  deleteSingleHighNoticeDb,
 } = require("../services/notice.service");
 
 exports.postSingleNotice = async (req, res, next) => {
@@ -22,10 +23,8 @@ exports.postSingleNotice = async (req, res, next) => {
   }
 };
 exports.postHighlightNotice = async (req, res, next) => {
-  console.log(req.body);
   try {
     const noticeResult = await createHightlightNotice(req.body);
-    console.log(noticeResult);
 
     res.status(200).json({
       status: "success",
@@ -43,6 +42,25 @@ exports.postHighlightNotice = async (req, res, next) => {
 exports.getAllHighlighNotice = async (req, res, next) => {
   try {
     const noticeResult = await getAllHighNoticeDb();
+
+    res.status(200).json({
+      status: "success",
+      message: "Successfully Added Student",
+      data: noticeResult,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: "Couldn't create student",
+      error: error.message,
+    });
+  }
+};
+exports.deleteHighlightNotice = async (req, res, next) => {
+  try {
+    const { noticeId } = req.query;
+
+    const noticeResult = await deleteSingleHighNoticeDb(noticeId);
 
     res.status(200).json({
       status: "success",

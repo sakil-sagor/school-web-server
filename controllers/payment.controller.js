@@ -7,7 +7,7 @@ const { generateToken } = require("../utils/token");
 
 exports.makeExamPayment = async (req, res, next) => {
     try {
-        console.log(req.body);
+
         const { money, payOption, type } = { ...req.body }
 
         const { id } = req.params;
@@ -104,7 +104,7 @@ exports.getAllByDayPayment = async (req, res, next) => {
 exports.postDayPayment = async (req, res, next) => {
     try {
         const student = await createSingleDayPayment(req.body);
-        console.log(student);
+  
         res.status(200).json({
             status: "success",
             message: "Successfully Added Student",

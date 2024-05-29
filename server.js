@@ -4,7 +4,10 @@ const dotenv = require("dotenv").config();
 const app = require("./app");
 
 // database connection
-const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.9clk0.mongodb.net/school-web-demo?retryWrites=true&w=majority`;
+
+// `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.9clk0.mongodb.net/school-web-demo?retryWrites=true&w=majority` // for demo
+
+const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.hjt5h6s.mongodb.net/piplakandighs-school?retryWrites=true&w=majority`;
 mongoose.connect(url).then(() => {
   console.log("Database connection is successful");
 });
